@@ -11,9 +11,17 @@ const mongoose = require('mongoose');
 
 let indexRouter = require('./routes/index');
 
-let mongodbUrl = 'mongodb://127.0.0.1:27017/';
+//let mongodbUrl = 'mongodb://127.0.0.1:27017/';
+let mongodbUrl = 'mongodb:mongodb@cluster0.lv1o8.mongodb.net';
 let dbName = 'contact_manager';
-mongoose.connect(mongodbUrl+dbName)
+//mongoose.connect(mongodbUrl+dbName)
+mongoose.connect('mongodb+srv://mongodb:mongodb@cluster0.lv1o8.mongodb.net/contact_manager?retryWrites=true&w=majority')
+let db = mongoose.connection;
+
+//Herou connection
+// Define a url to connect to the database
+const MONGODB_URI = process.env.MONGODB_URI || mongodbUrl + dbName
+mongoose.connect(MONGODB_URI)
 let db = mongoose.connection;
 
 // Initializing express
@@ -53,8 +61,13 @@ db.on('error', (error)=>{
 app.use('/',indexRouter)
 
 app.use('/add',indexRouter)
+
+//Heroku Port
 // Defining the port number
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
+// Defining the port number
+//const PORT = 5000;
 
 app.listen(PORT, ()=>{
    console.log(`Server is listening on port ${PORT}`)
