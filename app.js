@@ -14,8 +14,8 @@ let indexRouter = require('./routes/index');
 //let mongodbUrl = 'mongodb://127.0.0.1:27017/';
 let mongodbUrl = 'mongodb:mongodb@cluster0.lv1o8.mongodb.net';
 let dbName = 'contact_manager';
-//mongoose.connect(mongodbUrl+dbName)
-mongoose.connect('mongodb+srv://mongodb:mongodb@cluster0.lv1o8.mongodb.net/contact_manager?retryWrites=true&w=majority')
+mongoose.connect(mongodbUrl+dbName)
+//mongoose.connect('mongodb+srv://mongodb:mongodb@cluster0.lv1o8.mongodb.net/contact_manager?retryWrites=true&w=majority')
 let db = mongoose.connection;
 
 //Herou connection
