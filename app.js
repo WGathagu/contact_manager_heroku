@@ -12,16 +12,16 @@ const mongoose = require('mongoose');
 let indexRouter = require('./routes/index');
 
 //let mongodbUrl = 'mongodb://127.0.0.1:27017/';
-let mongodbUrl = 'mongodb://mongodb@cluster0.lv1o8.mongodb.net:27017/';
-let dbName = 'contact_manager';
-mongoose.connect(mongodbUrl+dbName)
-//mongoose.connect('mongodb+srv://mongodb:mongodb@cluster0.lv1o8.mongodb.net/contact_manager?retryWrites=true&w=majority')
+//let mongodbUrl = 'mongodb://mongodb@cluster0.lv1o8.mongodb.net/';
+//let dbName = 'contact_manager';
+//mongoose.connect(mongodbUrl+dbName)
+mongoose.connect('mongodb+srv://mongodb:mongodb@cluster0.lv1o8.mongodb.net/contact_manager?retryWrites=true&w=majority')
 //let db = mongoose.connection;
 
 //Herou connection
 // Define a url to connect to the database
-const MONGODB_URI = process.env.MONGODB_URI || mongodbUrl + dbName
-mongoose.connect(MONGODB_URI)
+//const MONGODB_URI = process.env.MONGODB_URI || mongodbUrl + dbName
+//mongoose.connect(MONGODB_URI)
 let db = mongoose.connection;
 
 // Initializing express
